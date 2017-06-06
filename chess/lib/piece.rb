@@ -4,6 +4,7 @@ class Piece
 
   def initialize
     @location = nil
+    @symbol = '@'
   end
 
   def to_s()
@@ -13,6 +14,7 @@ class Piece
   end
 
   def symbol()
+    return @symbol
   end
 
   def valid_moves()
