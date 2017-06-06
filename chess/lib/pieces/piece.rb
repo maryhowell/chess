@@ -1,7 +1,7 @@
 require 'singleton'
 
 class Piece
-
+    
   def initialize(location, board)
     @location = location
     @board = board
