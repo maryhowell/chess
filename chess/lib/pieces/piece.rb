@@ -2,15 +2,17 @@ require 'singleton'
 
 class Piece
 
-  def initialize
-    @location = nil
+  def initialize(location, board)
+    @location = location
+    @board = board
     @symbol = '@'
   end
 
   def to_s()
   end
 
-  def empty?()
+  def empty?
+    self.is_a?(NullPiece) ? true : false
   end
 
   def symbol()

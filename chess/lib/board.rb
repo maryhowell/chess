@@ -1,4 +1,4 @@
-require_relative 'piece'
+require_relative 'pieces'
 require_relative 'null_piece'
 
 
