@@ -1,3 +1,4 @@
+require 'byebug'
 require "io/console"
 
 KEYMAP = {
@@ -97,8 +98,10 @@ class Cursor
   end
 
   def update_pos(diff)
-    x = @cursor_pos[0] - diff[0]
-    y = @cursor_pos[1] - diff[1]
+    
+    x = @cursor_pos[0] + diff[0]
+    y = @cursor_pos[1] + diff[1]
     @cursor_pos = [x, y]
+
   end
 end
