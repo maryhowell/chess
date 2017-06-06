@@ -1,6 +1,8 @@
+require 'singleton'
+
 class Piece
 
-  def initalize
+  def initialize
     @location = nil
   end
 
@@ -14,15 +16,11 @@ class Piece
   end
 
   def valid_moves()
+    []
   end
 
   private
 
   def move_into_check(to_pos)
   end
-end
-
-
-class NullPiece < Piece
-
 end

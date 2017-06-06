@@ -1,25 +1,34 @@
-class Board
+require_relative 'piece'
+require_relative 'null_piece'
 
-  def initalize
-    @board = Array.new(8) { Array.new(8) }
+
+class Board
+  attr_reader :grid
+  def initialize
+    NullPiece.instance
+    @grid = make_starting_grid
   end
 
   def move_piece(start_pos, end_pos)
-    raise "Not a Piece" unless @board[start_pos].is_a?(Piece)
-    raise "Invalid Move" if @board[start_pos].valid_moves.include?(end_pos)
+    raise "Not a Piece" unless self[start_pos].is_a?(Piece)
+    raise "Invalid Move" if self[start_pos].valid_moves.include?(end_pos)
   end
 
   def [](pos)
+    x, y = pos
+    @grid[x][y]
   end
 
   def []=(pos, piece)
+    x, y = pos
+    @grid[x][y] = piece
   end
 
   def dup
   end
 
-  def move_piece(color, from_pos, to_pos)
-  end
+  # def move_piece(color, from_pos, to_pos)
+  # end
 
   def move_piece!(from_pos, to_pos)
   end
@@ -29,7 +38,11 @@ class Board
 
   protected
 
-  def make_starting_grid()
+  def make_starting_grid
+    whiteside = Array.new(2) { Array.new(8, Piece.new) } #TODO: replace pieces with actual chess ppl
+    midsection = Array.new(4) { Array.new(8, NullPiece.instance) }
+    darkside = Array.new(2) { Array.new(8, Piece.new) } #TODO: replace pieces with actual chess ppl
+    whiteside + midsection + darkside
   end
 
   def find_king(color)
