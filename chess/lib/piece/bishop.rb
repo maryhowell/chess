@@ -1,12 +1,12 @@
 require_relative 'piece'
 require_relative 'slideable'
 
-class Rook < Piece
+class Bishop < Piece
   include Slideable
 
   def initialize(location, board, side)
-    super(location, board)
-    @symbol = side == :white ? "♖" : "♜"
+    super(location, board, side)
+    @symbol = side == :white ? "♗" : "♝"
   end
 
   def symbol
@@ -16,6 +16,7 @@ class Rook < Piece
   protected
 
   def move_dirs
-    horizontal_dirs
+    diagonal_dirs
   end
+
 end

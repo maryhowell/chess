@@ -5,7 +5,7 @@ class Queen < Piece
   include Slideable
 
   def initialize(location, board, side)
-    super(location, board)
+    super(location, board, side)
     @symbol = side == :white ? "♕" : "♛"
   end
 

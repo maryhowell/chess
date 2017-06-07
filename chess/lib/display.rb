@@ -19,8 +19,14 @@ class Display
     @board.grid.length.times do |i|
       row = ''
       @board.grid.length.times do |j|
-        row << " #{@board[[i,j]].symbol} |" unless [i, j] == @cursor.cursor_pos
-        row << " #{@board[[i,j]].symbol.red} |" if [i, j] == @cursor.cursor_pos
+        if [i, j] == @cursor.cursor_pos
+          row << "#{@board[[i,j]].symbol.red} ".colorize(:background => :magenta)
+        elsif (i+j) % 2 != 0
+          row << "#{@board[[i,j]].symbol} ".colorize(:background => :white)
+        else
+          row << "#{@board[[i,j]].symbol} ".colorize(:background => :light_black)
+        end
+
       end
       rendered << row << "\n"
     end

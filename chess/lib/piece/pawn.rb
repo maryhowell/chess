@@ -2,8 +2,13 @@ require_relative 'piece'
 
 class Pawn < Piece
 
-  def symbol
+  def initialize(location, board, side)
+    super(location, board, side)
+    @symbol = side == :white ? "♙" : "♟"
+  end
 
+  def symbol
+    @symbol
   end
 
   def moves
@@ -21,7 +26,7 @@ class Pawn < Piece
   end
 
   def forward_steps
-
+    at_start_row? ? [0, 2] : [0, 1]
   end
 
   def side_attacks

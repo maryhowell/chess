@@ -1,11 +1,14 @@
 require 'singleton'
 
 class Piece
-    
-  def initialize(location, board)
+
+  def initialize(location, board, side)
     @location = location
     @board = board
+    @side = side
     @symbol = '@'
+
+    board.add_piece(self, location)
   end
 
   def to_s()
