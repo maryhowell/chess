@@ -60,6 +60,9 @@ class Board
    end
 
   def find_king(color)
+    @grid.each do |x,y|
+
+    end
   end
 
   def front_row(color)
